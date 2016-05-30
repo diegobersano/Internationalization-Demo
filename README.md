@@ -1,2 +1,2 @@
 # Internationalization-Demo
-Proyecto de demostración de internacionalización
+Proyecto de demostración de internacionalización a través de la Url que ve el usuario en ASP.NET MVC, utilizado en [mi blog personal: diegobersano.com.ar](http://diegobersano.com.ar)
