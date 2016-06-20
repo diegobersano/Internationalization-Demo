@@ -17,7 +17,7 @@ namespace Internacionalization.Controllers
                 ? Thread.CurrentThread.CurrentCulture.Name.Split('-')
                 : cultureRoute.Split('-');
 
-            RouteData.Values["culture"] = cultureRoute = this.GetCulture(cultureDefinition);
+            RouteData.Values["culture"] = cultureRoute = GetCulture(cultureDefinition);
 
             Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureRoute);
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
@@ -25,11 +25,13 @@ namespace Internacionalization.Controllers
             return base.BeginExecuteCore(callback, state);
         }
 
-        private string GetCulture(IReadOnlyList<string> cultureDefinition)
+        private static string GetCulture(IReadOnlyList<string> cultureDefinition)
         {
             return cultureDefinition[0] == SupportedCulture.English
                 ? SupportedCulture.English
-                : SupportedCulture.Spanish;
+                : cultureDefinition[0] == SupportedCulture.Arabic
+                    ? SupportedCulture.Arabic
+                    : SupportedCulture.Spanish;
         }
     }
 }

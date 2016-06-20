@@ -1,11 +1,12 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@using System.Threading
+<!DOCTYPE html>
+<html dir="@(Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft ? "rtl" : "ltr")">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render(string.Format("~/Content/css{0}", Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft ? "-rtl" : string.Empty))
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -27,6 +28,7 @@
                     <li>@Html.ActionLink(Internacionalization.Resources.Shared.Contact, "Contact", "Home")</li>
                     <li>@Html.ActionLink("Español", "SetLanguage", "Home", new { @language = "es" }, new { })</li>
                     <li>@Html.ActionLink("English", "SetLanguage", "Home", new { @language = "en" }, new { })</li>
+                    <li>@Html.ActionLink("العربية", "SetLanguage", "Home", new { @language = "ar" }, new { })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
